@@ -104,7 +104,7 @@ Method ConsumeStream() [ Private ]
     }
 }
 
-Method ResolveClass(className As %String, fileName As %String, resolverClass As %Dictionary.Classname) [ Private ]
+Method ResolveClass(className As %String, fileName As %String, resolverClass As %String(MAXLEN = 255)) [ Private ]
 {
     Set filePath = ##class(SourceControl.Git.Utils).TempFolder()_fileName
     Set file = ##class(%Stream.FileCharacter).%OpenId(filePath,,.sc)
