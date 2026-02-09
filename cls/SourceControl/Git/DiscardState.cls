@@ -1,4 +1,4 @@
-Class SourceControl.Git.DiscardState Extends (%Persistent)
+Class SourceControl.Git.DiscardState Extends %Persistent
 {
 
 Property FullExternalName As %String(MAXLEN = "") [ Required ];
