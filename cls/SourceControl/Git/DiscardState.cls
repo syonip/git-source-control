@@ -1,4 +1,4 @@
-Class SourceControl.Git.DiscardState Extends (%Persistent, %JSON.Adaptor)
+Class SourceControl.Git.DiscardState Extends (%Persistent)
 {
 
 Property FullExternalName As %String(MAXLEN = "") [ Required ];
@@ -98,7 +98,7 @@ ClassMethod DiscardStatesInBranch() As %DynamicArray
     set discardStates = []
     while(SQLCODE = 0) {
         set discardState = ..%OpenId(id)
-        do discardState.%JSONExportToString(.JSONStr)
+        set JSONStr = discardState.%ToJSON()
         set discardStateObject = ##class(%DynamicAbstractObject).%FromJSON(JSONStr)
         set discardStateObject.Id = id
         do discardStates.%Push(discardStateObject)
