@@ -33,8 +33,7 @@ Method GetCurrentStream() As %Stream.Object
 {
     set settings = ##class(SourceControl.Git.Settings).%New()
     set dynObj = settings.ToDynamicObject()
-    set formatter = ##class(%JSON.Formatter).%New()
-    $$$ThrowOnError(formatter.FormatToStream(dynObj, .stream))
+    $$$ThrowOnError(##class(%ZEN.Auxiliary.jsonProvider).%WriteJSONStreamFromObject(.stream, dynObj, , , , "cbwi"))
     return stream
 }
 
